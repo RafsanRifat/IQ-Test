@@ -3,4 +3,4 @@ from .models import Questions
 
 # Register your models here.
 
-admin.register(Questions)
+admin.site.register(Questions)

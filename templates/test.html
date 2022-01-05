@@ -14,6 +14,17 @@
 <div class="container">
     <div class="test-question-wrapper mt-5">
         <h2>Welcome to test page</h2>
+        {% for question in questions %}
+            <div class="test-questions mt-5">
+                <p>{{ question.question }}</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        {% endfor %}
     </div>
 </div>
 
