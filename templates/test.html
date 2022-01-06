@@ -13,7 +13,15 @@
 
 <div class="container">
     <div class="test-question-wrapper mt-5">
-        <h2>Welcome to test page</h2>
+        <h2 class="pb-5">Welcome to test page</h2>
+    <div class="sets-wrapper">
+        <h4>Please select a set :</h4>
+        <select name="" id="">
+            {% for set in sets %}
+                <option value="">{{ set }}</option>
+            {% endfor %}
+        </select>
+    </div>
         {% for question in questions %}
             <div class="test-questions mt-5">
                 <p>{{ question.question }}</p>
