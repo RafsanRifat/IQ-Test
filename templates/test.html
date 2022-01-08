@@ -55,14 +55,16 @@
     $(document).ready(function () {
         setInterval(function () {
             $.ajax({
+                type: 'GET',
                 url: "{% url 'test' %}",
-                success: function (data, status) {
+                success: function () {
                     {#alert(data)#}
                     {#console.log(data)#}
-                    console.log('Rafsan')
+                    console.log('rafsan');
                 },
                 error: function () {
                     console.log('fail');
+                    alert('An Error Occured');
                 }
             });
         }, 1000);

@@ -11,10 +11,10 @@ def home(request):
 
 def iq_test(request):
     sets = Question_sets.objects.all()
-    questions = Questions.objects.all()
-    context = {'questions': questions, 'sets': sets}
+    context = {'sets': sets}
     return render(request, 'test.html', context)
 
 
 def iq_api(request):
+    questions = Questions.objects.all()
     return JsonResponse({"ths": 'dsf'})
