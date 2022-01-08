@@ -11,59 +11,62 @@
     {#    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"#}
     {#            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"#}
     {#            crossorigin="anonymous"></script>#}
-        </head>
-        <body>
+</head>
+<body>
 
-        <div class="container">
-            <div class="test-question-wrapper mt-5">
-                <h2 class="pb-5">Welcome to test page</h2>
-                <div class="sets-wrapper">
-                    <h4>Please select a set :</h4>
-                    <select name="" id="">
-                        {% for set in sets %}
-                            <option value="">{{ set }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                {% for question in questions %}
-                    <div class="test-questions mt-5">
-                        <p>{{ question.question }}</p>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
+<div class="container">
+    <div class="test-question-wrapper mt-5">
+        <h2 class="pb-5">Welcome to test page</h2>
+        <div class="sets-wrapper">
+            <h4>Please select a set :</h4>
+            <select name="" id="">
+                {% for set in sets %}
+                    <option value="">{{ set }}</option>
                 {% endfor %}
-            </div>
+            </select>
         </div>
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        {% for question in questions %}
+            <div class="test-questions mt-5">
+                <p>{{ question.question }}</p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 
 {#    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"#}
 {#            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"#}
 {#            crossorigin="anonymous"></script>#}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
-          <script>
-            $(document).ready(function () {
-                $.ajax({
-                    url:  "{% url 'test' %}",
-                    success: function(data, status) {
-                       alert(data)
-                        console.log(data)
-                    },
-                    error: function() {
-                        console.log('fail');
-                    }
-                });
-        });
-    </script>
-    </body>
+<script>
+    $(document).ready(function () {
+        setInterval(function () {
+            $.ajax({
+                url: "{% url 'test' %}",
+                success: function (data, status) {
+                    {#alert(data)#}
+                    {#console.log(data)#}
+                    console.log('Rafsan')
+                },
+                error: function () {
+                    console.log('fail');
+                }
+            });
+        }, 1000);
+    });
+</script>
+</body>
 </html>
