@@ -17,4 +17,4 @@ def iq_test(request):
 
 def iq_api(request):
     questions = Questions.objects.all()
-    return JsonResponse({"ths": 'dsf'})
+    return JsonResponse({"questions": list(questions.values())})

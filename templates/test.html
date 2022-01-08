@@ -28,7 +28,7 @@
         {% for question in questions %}
             <div class="test-questions mt-5">
                 <p>{{ question.question }}</p>
-                <ul>
+                <ul id="display_questions">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -56,11 +56,10 @@
         setInterval(function () {
             $.ajax({
                 type: 'GET',
-                url: "{% url 'test' %}",
-                success: function () {
-                    {#alert(data)#}
-                    {#console.log(data)#}
-                    console.log('rafsan');
+                url: "{% url 'api' %}",
+                success: function (response) {
+                    $( "#display_questions" ).empty();
+                    for (var question in response.questions)
                 },
                 error: function () {
                     console.log('fail');
