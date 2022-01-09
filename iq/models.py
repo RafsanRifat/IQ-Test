@@ -16,3 +16,11 @@ class Questions(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class Options(models.Model):
+    option = models.CharField(max_length=200, blank=True)
+    questions = models.ForeignKey(Questions, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.option
