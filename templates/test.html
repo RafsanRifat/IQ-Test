@@ -29,10 +29,10 @@
             <div class="test-questions mt-5">
                 <p>{{ question.question }}</p>
                 <ul id="display_questions">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+{#                    <li></li>#}
+{#                    <li></li>#}
+{#                    <li></li>#}
+{#                    <li></li>#}
                 </ul>
             </div>
         {% endfor %}
@@ -60,6 +60,10 @@
                 success: function (response) {
                     $( "#display_questions" ).empty();
                     for (var question in response.questions)
+                    {
+                        var temp = "<li>" +response.questions[question].question+"</li>";
+                        $("#display_questions").append(temp);
+                    }
                 },
                 error: function () {
                     console.log('fail');
