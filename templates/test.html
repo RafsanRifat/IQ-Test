@@ -20,7 +20,7 @@
         <h2 class="pb-5">Welcome to test page</h2>
         <div class="sets-wrapper">
             <h4>Please select a set :</h4>
-            <select name="" id="">
+            <select name="" id="set">
                 {% for set in sets %}
                     <option value="">{{ set }}</option>
                 {% endfor %}
@@ -74,5 +74,16 @@
         }, 1000);
     });
 </script>
+
+{#Select2#}
+
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function () {
+        $('#set').select2();
+    });
+</script>
+
+
 </body>
 </html>
