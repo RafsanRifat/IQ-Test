@@ -11,6 +11,7 @@
     {#    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"#}
     {#            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"#}
     {#            crossorigin="anonymous"></script>#}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -25,20 +26,21 @@
                 {% endfor %}
             </select>
         </div>
-{#        {% for question in questions %}#}
-            <div class="test-questions mt-5" id="display_questions">
-{#                <p>{{ question.question }}</p>#}
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-{#        {% endfor %}#}
+        {#        {% for question in questions %}#}
+        <div class="test-questions mt-5" id="display_questions">
+            {#                <p>{{ question.question }}</p>#}
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        {#        {% endfor %}#}
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 {#    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"#}
@@ -58,10 +60,9 @@
                 type: 'GET',
                 url: "{% url 'api' %}",
                 success: function (response) {
-                    $( "#display_questions" ).empty();
-                    for (var question in response.questions)
-                    {
-                        var temp = "<p>" +response.questions[question].question+"</p>";
+                    $("#display_questions").empty();
+                    for (var question in response.questions) {
+                        var temp = "<p>" + response.questions[question].question + "</p>";
                         $("#display_questions").append(temp);
                     }
                 },
