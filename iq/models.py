@@ -27,15 +27,15 @@ class Options(models.Model):
 
 
 class Publication(models.Model):
-    title: models.CharField(max_length=30)
+    title = models.CharField(max_length=30, null=True, blank=True, )
 
     def __str__(self):
-        self.title
+        return self.title
 
 
 class Article(models.Model):
-    headline = models.CharField(max_length=100)
-    publications = models.ManyToManyField(Publication)
+    headline = models.CharField(max_length=100, null=True, blank=True, )
+    publications = models.ManyToManyField(Publication, null=True, blank=True, )
 
     def __str__(self):
-        self.headline
+        return self.headline
