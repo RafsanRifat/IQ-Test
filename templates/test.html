@@ -24,14 +24,16 @@
 {#            </select>#}
 {#        </div>#}
                 {% for question in questions %}
-        <div class="test-questions mt-5" id="display_questions">
-                            <p>{{ question.question }}</p>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
+                    <div class="test-questions mt-5" id="display_questions">
+                                        <p>{{ question.question }}</p>
+
+                        <ul>
+                            {% for option in question.options_set.all %}
+                                <li>{{ option }}</li>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
                 {% endfor %}
     </div>
 </div>

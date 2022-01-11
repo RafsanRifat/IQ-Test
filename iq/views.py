@@ -1,6 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from .models import Questions, Question_sets, Options
+# Program to generate a random number between 0 and 9
+
+# importing the random module
+import random
 
 
 # Create your views here.
@@ -11,16 +15,25 @@ def home(request):
 
 def iq_test(request):
     sets = Question_sets.objects.all()
-    questions = Questions.objects.all()
-    context = {'sets': sets, 'questions': questions}
+    set_item = []
+    for set in sets:
+        set_item.append(set.id)
+    random_index = random.randint(0, len(set_item)-1)
+    print("This is random index",random_index)
+    if random_index < 4:
+        RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
+        questions = RandomQuestionSet.questions_set.all()
+    else:
+        return  HttpResponse ("Plese reload again")
+    context = {'questions': questions}
     return render(request, 'test.html', context)
-
 
 # def iq_api(request):
 #     questions = Questions.objects.all()
 #     return JsonResponse({"questions": list(questions.values())})
 
-def options(request):
-    options = Options.objects.all()
-    context = {'options': options}
-    return render(request, 'test.html', context)
+# def options(request):
+#     if request.method =='GET':
+#         options = Options.objects.get(id=id)
+#     context = {'options': options}
+#     return render(request, 'test.html', context)
