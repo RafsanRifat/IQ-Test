@@ -18,13 +18,10 @@ def iq_test(request):
     set_item = []
     for set in sets:
         set_item.append(set.id)
-    random_index = random.randint(0, len(set_item)-1)
-    print("This is random index",random_index)
-    if random_index < 4:
-        RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
-        questions = RandomQuestionSet.questions_set.all()
-    else:
-        return  HttpResponse ("Plese reload again")
+    random_index = random.randint(0, len(set_item) - 1)
+    print("This is random index", random_index)
+    RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
+    questions = RandomQuestionSet.questions_set.all()
     context = {'questions': questions}
     return render(request, 'test.html', context)
 
