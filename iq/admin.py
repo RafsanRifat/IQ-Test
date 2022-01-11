@@ -6,5 +6,5 @@ from .models import Questions, Question_sets, Options, Publication, Article
 admin.site.register(Questions)
 admin.site.register(Question_sets)
 admin.site.register(Options)
-admin.site.register(Publication)
-admin.site.register(Article)
+# admin.site.register(Publication)
+# admin.site.register(Article)
