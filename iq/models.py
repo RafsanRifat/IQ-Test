@@ -30,3 +30,6 @@ class Answer(models.Model):
     correct_answer = models.OneToOneField(Options, on_delete=models.CASCADE)
     question = models.OneToOneField(Questions, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.correct_answer
+
