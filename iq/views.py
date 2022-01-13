@@ -1,6 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import JsonResponse
-from .models import Questions, Question_sets, Options
+from .models import Questions, Question_sets, Options, Answer
 # Program to generate a random number between 0 and 9
 
 # importing the random module
@@ -22,15 +22,10 @@ def iq_test(request):
     print("This is random index", random_index)
     RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
     questions = RandomQuestionSet.questions_set.all()
+    # for question in questions:
+    #     answer = question.options_set.filter()
+    if request.method == "POST":
+        print(dict(request.POST.items()))
+        return redirect('/')
     context = {'questions': questions}
     return render(request, 'test.html', context)
-
-# def iq_api(request):
-#     questions = Questions.objects.all()
-#     return JsonResponse({"questions": list(questions.values())})
-
-# def options(request):
-#     if request.method =='GET':
-#         options = Options.objects.get(id=id)
-#     context = {'options': options}
-#     return render(request, 'test.html', context)
