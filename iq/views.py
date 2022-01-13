@@ -25,7 +25,9 @@ def iq_test(request):
     # for question in questions:
     #     answer = question.options_set.filter()
     if request.method == "POST":
-        print(dict(request.POST.items()))
+        items = dict(request.POST.items())
+        for item in items:
+            print(item)
         return redirect('/')
     context = {'questions': questions}
     return render(request, 'test.html', context)
