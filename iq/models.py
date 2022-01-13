@@ -26,16 +26,7 @@ class Options(models.Model):
         return self.option
 
 
-# class Publication(models.Model):
-#     title = models.CharField(max_length=30, null=True, blank=True, )
-#
-#     def __str__(self):
-#         return self.title
-#
-#
-# class Article(models.Model):
-#     headline = models.CharField(max_length=100, null=True, blank=True, )
-#     publications = models.ManyToManyField(Publication, null=True, blank=True, )
-#
-#     def __str__(self):
-#         return self.headline
+class Answer(models.Model):
+    correct_answer = models.OneToOneField(Options, on_delete=models.CASCADE)
+    question = models.OneToOneField(Questions, on_delete=models.CASCADE)
+
