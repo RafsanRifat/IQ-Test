@@ -23,10 +23,16 @@ def iq_test(request):
     RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
     questions = RandomQuestionSet.questions_set.all()
     answers = Answer.objects.all()
-    print(answers)
+    for answer in answers:
+        answer_id = answer.id
+        print(answer_id)
     if request.method == "POST":
         for key, value in request.POST.lists():
             print(key, value)
+            if value == answer_id:
+                print("Correct answer")
+            else:
+                print("Wrong answer")
 
         return redirect('/')
     context = {'questions': questions}
