@@ -22,9 +22,12 @@ def iq_test(request):
     print("This is random index", random_index)
     RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
     questions = RandomQuestionSet.questions_set.all()
+    answers = Answer.objects.all()
+    print(answers)
     if request.method == "POST":
         for key, value in request.POST.lists():
             print(key, value)
+
         return redirect('/')
     context = {'questions': questions}
     return render(request, 'test.html', context)
