@@ -22,11 +22,14 @@ def iq_test(request):
     print("This is random index", random_index)
     RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
     questions = RandomQuestionSet.questions_set.all()
-    answers = Answer.objects.all()
-    for answer in answers:
-        answer_id = answer.id
-        print(answer_id)
+
     if request.method == "POST":
+        answers = Answer.objects.all()
+        for answer in answers:
+            print(answer)
+            answer_id = answer.correct_answer.id
+            print(answer_id)
+
         for key, value in request.POST.lists():
             print(key, value)
             if value == answer_id:
