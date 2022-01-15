@@ -29,7 +29,7 @@
                 <div class="test-questions mt-5" id="display_questions">
                     <p>{{ question.question }}</p>
                     {% for option in question.options_set.all %}
-                        <input type="radio" name="option" id="{{ option.id }}" value="{{ option }}">
+                        <input type="radio" name="option-{{ question.id }}" id="{{ option.id }}" value="{{ option }}">
                         <label for="">{{ option }}</label><br>
                     {% endfor %}
                 </div>
