@@ -26,16 +26,21 @@ def iq_test(request):
     if request.method == "POST":
         answers = Answer.objects.all()
         for answer in answers:
-            print(answer)
+            answers.filter()
             answer_id = answer.correct_answer.id
-            print(answer_id)
+            # print(answer_id)
 
         for key, value in request.POST.lists():
-            print(key, value)
-            if value == answer_id:
-                print("Correct answer")
-            else:
-                print("Wrong answer")
+            # print(key, value)
+            if key.split('-')[-1] != 'csrfmiddlewaretoken':
+                qu_id =  key.split('-')[-1]
+                get_answer = Answer.objects.filter(question__question_sets_id=qu_id ,correct_answer__option__contains=value[0])
+                print(get_answer)
+            print("------")
+            # if value == answer_id:
+            #     print("Correct answer")
+            # else:
+            #     # print("Wrong answer")
 
         return redirect('/')
     context = {'questions': questions}
