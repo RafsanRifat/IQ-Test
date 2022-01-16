@@ -38,10 +38,6 @@ def iq_test(request):
                                                    correct_answer__option__contains=value[0])
                 print(get_answer)
             print("------")
-            # if value == answer_id:
-            #     print("Correct answer")
-            # else:
-            #     # print("Wrong answer")
 
         return redirect('/')
     context = {'questions': questions}
