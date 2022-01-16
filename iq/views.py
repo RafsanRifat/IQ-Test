@@ -37,6 +37,10 @@ def iq_test(request):
                 get_answer = Answer.objects.filter(question_id=qu_id,
                                                    correct_answer__option__contains=value[0])
                 print(get_answer)
+                total_correct_answer = get_answer.count()
+                print("Total correct answer : " + str(total_correct_answer))
+                
+
 
         return redirect('/')
     context = {'questions': questions}
