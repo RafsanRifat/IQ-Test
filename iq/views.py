@@ -37,7 +37,6 @@ def iq_test(request):
                 get_answer = Answer.objects.filter(question_id=qu_id,
                                                    correct_answer__option__contains=value[0])
                 print(get_answer)
-            print("------")
 
         return redirect('/')
     context = {'questions': questions}
