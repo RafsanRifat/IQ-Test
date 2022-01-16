@@ -13,7 +13,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-def iq_test(request):
+def iq_test(request, total_correct_answer=None):
     sets = Question_sets.objects.all()
     set_item = []
     for set in sets:
@@ -39,9 +39,7 @@ def iq_test(request):
                 print(get_answer)
                 total_correct_answer = get_answer.count()
                 print("Total correct answer : " + str(total_correct_answer))
-                
-
 
         return redirect('/')
-    context = {'questions': questions}
+    context = {'questions': questions, 'total_correct_answer': total_correct_answer}
     return render(request, 'test.html', context)
