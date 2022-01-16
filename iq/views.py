@@ -31,10 +31,10 @@ def iq_test(request):
             # print(answer_id)
 
         for key, value in request.POST.lists():
-            # print(key, value)
+            print(key, value)
             if key.split('-')[-1] != 'csrfmiddlewaretoken':
                 qu_id = key.split('-')[-1]
-                get_answer = Answer.objects.filter(question__question_sets_id=qu_id,
+                get_answer = Answer.objects.filter(question_id=qu_id,
                                                    correct_answer__option__contains=value[0])
                 print(get_answer)
             print("------")
