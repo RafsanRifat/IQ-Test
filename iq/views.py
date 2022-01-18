@@ -44,6 +44,5 @@ def iq_test(request, total_correct_answer=None):
     context = {'questions': questions, 'total_correct_answer': total_correct_answer}
     return render(request, 'test.html', context)
 
-
 # def result(request):
 #     return render(request, 'result.html')
