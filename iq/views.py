@@ -40,6 +40,10 @@ def iq_test(request, total_correct_answer=None):
                 total_correct_answer = get_answer.count()
                 print("Total correct answer : " + str(total_correct_answer))
 
-        return redirect('/')
+        return redirect('result')
     context = {'questions': questions, 'total_correct_answer': total_correct_answer}
     return render(request, 'test.html', context)
+
+
+# def result(request):
+#     return render(request, 'result.html')
