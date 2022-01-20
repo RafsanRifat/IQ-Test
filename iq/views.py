@@ -22,6 +22,9 @@ def iq_test(request, total_correct_answer=None):
     print("This is random index", random_index)
     RandomQuestionSet = Question_sets.objects.filter(id=set_item[random_index]).first()
     questions = RandomQuestionSet.questions_set.all()
+    single_question = []
+    for question in questions:
+        single_question.append(question)
 
     if request.method == "POST":
         answers = Answer.objects.all()
@@ -36,11 +39,8 @@ def iq_test(request, total_correct_answer=None):
                 qu_id = key.split('-')[-1]
                 get_answer = Answer.objects.filter(question_id=qu_id,
                                                    correct_answer__option__contains=value[0])
-                print(get_answer)
                 total_correct_answer = get_answer.count()
                 print("Total correct answer : " + str(total_correct_answer))
-
-        # return redirect('result')
         context = {'score': total_correct_answer}
         return render(request, 'result.html', context)
     context = {'questions': questions, 'total_correct_answer': total_correct_answer}
