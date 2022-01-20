@@ -43,7 +43,7 @@ def iq_test(request, total_correct_answer=None):
                 print("Total correct answer : " + str(total_correct_answer))
         context = {'score': total_correct_answer}
         return render(request, 'result.html', context)
-    context = {'questions': questions, 'total_correct_answer': total_correct_answer}
+    context = {'questions': single_question, 'total_correct_answer': total_correct_answer}
     return render(request, 'test.html', context)
 
 # def result(request):
