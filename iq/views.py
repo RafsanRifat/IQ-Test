@@ -40,9 +40,11 @@ def iq_test(request, total_correct_answer=None):
                 get_answer = Answer.objects.filter(question_id=qu_id,
                                                    correct_answer__option__contains=value[0])
                 total_correct_answer = get_answer.count()
-                print("Total correct answer : " + str(total_correct_answer))
-        context = {'score': total_correct_answer}
-        return render(request, 'result.html', context)
+                if total_correct_answer == None:
+                    return redirect('/')
+                else:
+                    context = {'score': total_correct_answer}
+                    return render(request, 'result.html', context)
     context = {'questions': single_question, 'total_correct_answer': total_correct_answer}
     return render(request, 'test.html', context)
 
