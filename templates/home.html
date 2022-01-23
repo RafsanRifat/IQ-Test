@@ -15,7 +15,11 @@
 <div class="container">
     <div class="test-wrapper d-flex align-items-center justify-content-center flex-column" style="height: 100vh">
         <h2 class="">Start a Test : </h2>
-        <a href="{% url 'test' %}" class="btn btn-primary mt-5">Start Test</a>
+        <a href="{% url 'test' %}" class="btn btn-primary mt-5"id="btnStart" type="button" value="Start"
+        onclick="printDuration();">Start Test</a>
+        <button class="btn btn-primary" id="btnStart" type="button" value="Start"
+        onclick="printDuration();">Start time</button>
+        <p id="para">0</p>
     </div>
 </div>
 
@@ -29,5 +33,28 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+        var check = null;
+
+        function printDuration() {
+            if (check == null) {
+                var cnt = 0;
+
+                check = setInterval(function () {
+                    cnt += 1;
+                    document.getElementById("para").innerHTML = cnt;
+                }, 1000);
+            }
+        }
+
+        function stop() {
+            clearInterval(check);
+            check = null;
+            document.getElementById("para").innerHTML = '0';
+        }
+        console.log("Time counting... ... ...")
+    </script>
+
 </body>
 </html>

@@ -15,6 +15,7 @@
 <div class="container">
     <div class="test-question-wrapper mt-5">
         <h2 class="pb-5">Welcome to test page</h2>
+        <p id="para">0</p>
         {#        <div class="sets-wrapper">#}
         {#            <h4>Please select a set :</h4>#}
         {#            <select name="" id="set">#}
@@ -79,6 +80,30 @@
 {#        $('#set').select2();#}
 {#    });#}
 {#</script>#}
+
+
+<script type="text/javascript">
+    var check = null;
+
+    function printDuration() {
+        if (check == null) {
+            var cnt = 0;
+
+            check = setInterval(function () {
+                cnt += 1;
+                document.getElementById("para").innerHTML = cnt;
+            }, 1000);
+        }
+    }
+
+    function stop() {
+        clearInterval(check);
+        check = null;
+        document.getElementById("para").innerHTML = '0';
+    }
+
+    console.log("Time counting... ... ...")
+</script>
 
 
 </body>
