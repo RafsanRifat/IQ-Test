@@ -31,7 +31,6 @@ def iq_test(request, total_correct_answer=None):
         for answer in answers:
             answers.filter()
             answer_id = answer.correct_answer.id
-            # print(answer_id)
 
         for key, value in request.POST.lists():
             print(key, value)
